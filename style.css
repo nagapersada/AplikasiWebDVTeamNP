@@ -1,0 +1,436 @@
+/* === ROOT & BODY === */
+:root {
+  --warna-utama: #ffd700; /* Gold */
+  --warna-bg-utama: #121212; /* Hampir hitam */
+  --warna-bg-kartu: #1a1a1a; /* Abu-abu gelap */
+  --warna-teks: #f0f0f0;   /* Putih pudar */
+  --warna-teks-sekunder: #aaa;
+  --warna-border: #333;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--warna-bg-utama);
+  color: var(--warna-teks);
+  margin: 0;
+  padding: 0;
+  text-align: left; /* Default rata kiri */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* === TATA LETAK UTAMA (PRESISI) === */
+.dashboard {
+  width: auto;
+  max-width: 1200px; /* Lebar maksimum baru, lebih lega */
+  margin: 20px auto;
+  padding: 0 15px; /* Padding untuk mobile */
+  animation: fadeIn 0.5s;
+  text-align: center; /* DIKEMBALIKAN: Untuk logo & judul di tengah */
+}
+
+/* LOGO DIPERBESAR & DIKEMBALIKAN */
+.small-logo {
+  width: 100px; /* Ukuran baru yang lebih tegas */
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.dashboard h2 {
+  margin-bottom: 25px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === DESAIN KARTU (MODERN) === */
+.card {
+  background-color: var(--warna-bg-kartu);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  text-align: left; /* PENTING: Konten kartu tetap rata kiri */
+}
+
+/* === LAYOUT GRID (PRESISI) === */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1 bagian statistik, 2 bagian form */
+  gap: 20px;
+}
+
+/* Kartu Statistik */
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.stats-card h3 {
+  margin: 0 0 10px 0;
+  color: var(--warna-teks-sekunder);
+  font-weight: 500;
+}
+#totalMembers {
+  font-size: 3.5em;
+  font-weight: 700;
+  color: var(--warna-utama);
+  line-height: 1;
+}
+
+/* Kartu Form (Presisi dengan Grid) */
+.form-card h3 { margin-top: 0; }
+#form-container {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* Label | Input */
+  gap: 15px;
+  align-items: center;
+}
+.input-label {
+  text-align: right;
+  color: var(--warna-teks-sekunder);
+  font-size: 0.9em;
+  font-weight: 500;
+  padding-right: 10px;
+}
+/* Pindahkan tombol "Tambah" ke bawah form */
+#addMemberButton {
+  grid-column: 1 / -1; /* Rentangkan di kedua kolom grid */
+  margin-top: 10px;
+}
+
+/* === KARTU DIAGRAM (PRESISI) === */
+.chart-card {
+  padding: 25px;
+}
+.chart-card h3 { margin-top: 0; }
+#chartPeriodSelector {
+  display: block;
+  max-width: 300px;
+  margin: 0 auto 20px auto; /* Posisikan di tengah */
+  text-align: center;
+}
+/* Kontainer canvas untuk memastikan padding bekerja */
+.chart-canvas-container {
+  position: relative;
+  width: 100%;
+}
+
+/* === KARTU PENCARIAN & AKSI (FLEXBOX) === */
+.search-card h3, .actions-card h3 { margin-top: 0; }
+.search-container {
+  display: flex;
+  flex-wrap: wrap; /* Agar responsif di mobile */
+  gap: 15px;
+  align-items: center;
+}
+#searchTerm {
+  flex-grow: 1; /* Ambil sisa ruang */
+  min-width: 200px;
+}
+
+/* Style filter tanggal (Sudah dihapus) */
+
+.search-container button {
+  flex-shrink: 0; /* Jangan susutkan tombol */
+}
+
+/* Grid Tombol Aksi */
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+.actions-grid button {
+  width: 100%; /* Tombol mengisi grid */
+  margin: 0;
+}
+
+/* === ELEMEN FORM (MODERN) === */
+input[type="text"], input[type="password"], input[type="date"], select {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid var(--warna-border);
+  background-color: var(--warna-bg-utama);
+  color: var(--warna-teks);
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box; /* PENTING UNTUK PRESISI */
+  margin: 0; /* Hapus margin auto */
+}
+input[type="text"]::placeholder { color: #666; }
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--warna-utama);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* === TOMBOL (ELEGAN) === */
+button {
+  background-color: var(--warna-utama);
+  color: #000;
+  border: none;
+  padding: 12px 24px; /* Padding default */
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95em; /* Ukuran font default */
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+button.btn-secondary {
+  background-color: #444;
+  color: var(--warna-teks);
+}
+button.btn-secondary:hover {
+  background-color: #555;
+  box-shadow: 0 4px 10px rgba(100, 100, 100, 0.2);
+}
+button.btn-danger {
+  background-color: #d9534f;
+  color: white;
+}
+button.btn-danger:hover {
+  box-shadow: 0 4px 10px rgba(217, 83, 79, 0.4);
+}
+/* Tombol kecil di tabel (TETAP) */
+.btn-edit { background-color: #5bc0de; color: white; padding: 5px 10px; font-size: 0.9em; }
+.btn-delete { background-color: #d9534f; color: white; padding: 5px 10px; font-size: 0.9em; }
+
+/* === HALAMAN LOGIN === */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.login-container {
+  width: auto;
+  max-width: 450px;
+  margin: 20px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  background-color: var(--warna-bg-kartu);
+  text-align: center;
+}
+.login-container .logo {
+  width: 100px;
+  margin-bottom: 15px;
+}
+.login-container h2 {
+  color: var(--warna-utama);
+  margin-bottom: 20px;
+}
+.login-container input {
+  text-align: center;
+  margin: 10px 0; /* Hapus margin auto */
+}
+.login-container button {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* === TABEL (DAFTAR ANGGOTA LENGKAP) === */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.results-table th, .results-table td {
+  border: 1px solid var(--warna-border);
+  padding: 12px 15px;
+  text-align: left;
+  white-space: nowrap;
+}
+.results-table th {
+  background-color: #000;
+  color: var(--warna-utama);
+  font-weight: 600;
+  border-bottom: 2px solid var(--warna-utama);
+  text-align: center;
+}
+.results-table td {
+  text-align: center;
+}
+.results-table tr:nth-child(even) {
+  background-color: #222;
+}
+
+/* === MODAL & NOTIFIKASI === */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.modal-content {
+  background-color: var(--warna-bg-kartu);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+  max-width: 450px;
+  text-align: left;
+}
+.modal-content h3 { margin-top: 0; }
+.modal-content .input-label { text-align: left; padding: 0; }
+.modal-content input { margin: 5px 0 15px 0; }
+
+.notification {
+  background-color: var(--warna-utama);
+  color: #000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  font-weight: 600;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  border-radius: 8px;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* === STYLE SORTING (TETAP) === */
+.sortable-header { cursor: pointer; position: relative; }
+.sortable-header:hover { background-color: #111; }
+.sortable-header::after {
+  content: ''; position: absolute; right: 8px; top: 50%;
+  transform: translateY(-50%); border: 5px solid transparent; opacity: 0.3;
+}
+.sortable-header.sort-asc::after { border-bottom-color: var(--warna-utama); opacity: 1; }
+.sortable-header.sort-desc::after { border-top-color: var(--warna-utama); opacity: 1; }
+
+/* === DIAGRAM JARINGAN (TETAP) === */
+#networkDiagram {
+    width:100%; 
+    height:75vh; 
+    background:#000;
+    border: 1px solid var(--warna-border);
+    border-radius: 10px;
+}
+.network-page {
+  max-width: 1400px;
+  margin: 20px auto;
+}
+
+/* === STYLE KARTU HASIL PENCARIAN === */
+#searchResultsContainer {
+  margin-top: 20px;
+}
+.result-card {
+  background-color: var(--warna-bg-utama); /* Warna beda dari card utama */
+  border: 1px solid var(--warna-border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+.result-info {
+  display: block; /* Tumpuk secara default, bagus untuk mobile */
+  margin-bottom: 12px;
+}
+.info-label {
+  display: block;
+  font-size: 0.8em;
+  color: var(--warna-teks-sekunder);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  text-align: left;
+}
+.info-value {
+  display: block;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--warna-teks);
+  text-align: left;
+}
+.result-actions {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--warna-border);
+  display: flex;
+  flex-wrap: wrap; /* Tombol jadi rapi di mobile */
+  gap: 10px;
+}
+
+/* ========================================================== */
+/* === STYLE BARU UNTUK UKURAN TOMBOL DI KARTU HASIL === */
+/* ========================================================== */
+.result-actions button {
+  flex-grow: 1; /* Tombol membagi rata ruang */
+  flex-basis: 120px; /* Lebar minimum tombol */
+  margin: 0;
+  /* Override padding dan font-size dari style 'button' utama */
+  padding: 8px 16px; /* Padding lebih kecil */
+  font-size: 0.85em; /* Font lebih kecil */
+}
+
+/* Pastikan override spesifik untuk .btn-edit dan .btn-delete juga kecil */
+.result-actions button.btn-edit,
+.result-actions button.btn-delete {
+    padding: 8px 16px;
+    font-size: 0.85em;
+}
+/* ========================================================== */
+/* === AKHIR STYLE BARU === */
+/* ========================================================== */
+
+
+/* === RESPONSIVE (PRESISI DI MOBILE) === */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Tumpuk kartu di mobile */
+  }
+  #form-container {
+    grid-template-columns: 1fr; /* Form jadi satu kolom */
+  }
+  .input-label {
+    text-align: left;
+    margin-bottom: -10px; /* Label di atas input */
+  }
+  #addMemberButton {
+    grid-column: 1;
+  }
+  .dashboard h2 {
+    font-size: 1.2em;
+  }
+  .card {
+    padding: 15px;
+  }
+  
+  /* Perbaikan kartu hasil pencarian di mobile (Tombol tetap ditumpuk) */
+  .result-actions {
+    flex-direction: column; 
+  }
+  .result-actions button {
+    flex-basis: auto; /* Hapus basis lebar di mobile */
+    width: 100%; /* Buat tombol full width saat ditumpuk */
+  }
+}
+
+/* Watermark GoJS (TIDAK disembunyikan) */
